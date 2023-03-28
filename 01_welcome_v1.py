@@ -1,4 +1,4 @@
-"""Version 1 of welcome and menu screen without easygui """
+"""Version 1 of welcome and menu screen without using easygui """
 
 
 print("Welcome to Burger Menu Combos")
