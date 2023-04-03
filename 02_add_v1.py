@@ -3,7 +3,7 @@ burger combos in different storage units"""
 
 import easygui
 
-# Stores burger combos in a 2 dimensional dictionary with the prices in a list
+# Stores burger combos in a 2 dimensional dictionary
 combos = {"VALUE":
             {"Beef Burger": 5.69,
              "Fries": 1.00,
@@ -17,3 +17,14 @@ combos = {"VALUE":
              "Large fries": 2.00,
              "Smoothie": 2.00}
           }
+
+text = "Enter the following combo items"  # Prompt for user to type
+title = "Enter combo"  # Title shown
+input_list = ["Combo name", "Burger", "Side", "Drink"]  # Fields to fill in
+
+# User's inputs are added to a list
+enter = easygui.multenterbox(text, title, input_list)
+
+
+
+
