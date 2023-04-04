@@ -7,7 +7,7 @@ import easygui
 
 
 def welcome():
-    easygui.msgbox("Welcome to Burger Menu Combos")
+    easygui.msgbox("Welcome to Burger Menu Combos", "Welcome")
     # Allow the user to select what they want to do
     choice = easygui.buttonbox("What would you like to do?\n", "Options",
                                choices=["1) Add combo", "2) Search combo",
