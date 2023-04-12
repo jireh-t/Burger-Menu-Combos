@@ -1,8 +1,8 @@
-"""Component 2 Add combo version 1
-This code will be trial 1 of storing, adding, and printing the existing
-burger combos in different storage units"""
+"""Puts the float function from v3 into the original code"""
 
+# Float checking function - loops until a valid number is entered
 import easygui
+
 
 # Stores burger combos in a nested dictionary
 combos = {"VALUE":
@@ -37,6 +37,8 @@ price_title = "Enter prices"  # Title shown
 input_price = [f"{items[1]}", f"{items[2]}", f"{items[3]}"]
 # Prices added to a list
 prices = easygui.multenterbox(price_text, price_title, input_price)
+
+float_checker(prices[0], items[1])
 
 # Add the user's combo to a new dictionary
 
