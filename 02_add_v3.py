@@ -1,8 +1,29 @@
-"""Version 2 of add combo, trialling a different way to ask the user for
-their combo. Uses a new enter box for every item rather than a combined
-multenterbox """
+"""Puts the float function 03_float_checker_v4_function into the code.
+Building on the code from version 2"""
 
 import easygui
+
+
+# Float checking function - loops until a valid number is entered
+def float_checker(question, low, high, item):
+    error = "That was not a valid input\n" \
+            "Please enter a price above ${} and below ${}\n".format(low, high)
+
+    # Keep asking until a valid amount (0-40) is entered
+    while True:
+        try:
+            # Ask for price
+            number = float(easygui.enterbox(question, item))
+
+            # Check for number within the required range
+            if low < number <= high:
+                return number
+            else:
+                easygui.msgbox(error)
+
+        except ValueError:
+            easygui.msgbox(error, "Error")
+
 
 # Stores burger combos in a nested dictionary
 combos = {"VALUE":
@@ -52,4 +73,3 @@ easygui.buttonbox(f"Is the following combo correct?\n\n"
                   f"{name}\n\n"
                   f"{combo}",
                   choices=["Yes", "No"])
-

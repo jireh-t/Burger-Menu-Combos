@@ -1,6 +1,6 @@
 """Component 2 Add combo version 1
-This code will be trial 1 of storing, adding, and printing the existing
-burger combos in different storage units"""
+This code will be trial 1 using an enterbox with multiple fields to get the
+user's combo"""
 
 import easygui
 
