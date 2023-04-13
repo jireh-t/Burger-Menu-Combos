@@ -17,6 +17,7 @@ def float_checker(question, low, high, item):
 
             # Check for number within the required range
             if low < number <= high:
+                number = f"${number:.2f}"
                 return number
             else:
                 easygui.msgbox(error)
@@ -27,5 +28,5 @@ def float_checker(question, low, high, item):
 
 # Main routine
 price = float_checker("Please enter price of burger", 0, 40, "Burger")
-price = f"{price:.2f}"
-easygui.msgbox(f" Burger = ${price}")
+
+easygui.msgbox(f" Burger = {price}")

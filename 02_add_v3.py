@@ -17,6 +17,7 @@ def float_checker(question, low, high, item):
 
             # Check for number within the required range
             if low < number <= high:
+                number = f"${number:.2f}"
                 return number
             else:
                 easygui.msgbox(error)
@@ -44,15 +45,15 @@ new_combo = {}
 
 # Get items in combos
 
-combo_name = easygui.enterbox("Enter combo name", "Combo name")
-burger = easygui.enterbox("Enter burger name", "Burger")
-side = easygui.enterbox("Enter side name", "Side")
-drink = easygui.enterbox("Enter drink name", "Drink")
+combo_name = easygui.enterbox("Enter combo name", "COMBO NAME")
+burger = easygui.enterbox("Enter burger name", "BURGER")
+side = easygui.enterbox("Enter side name", "SIDE")
+drink = easygui.enterbox("Enter drink name", "DRINK")
 
 # Get prices of combos
-burger_price = easygui.enterbox(f"Enter the price of {burger}", "Burger price")
-side_price = easygui.enterbox(f"Enter the price of {side}", "Side price")
-drink_price = easygui.enterbox(f"Enter the price of {drink}", "Drink price")
+burger_price = float_checker(f"Enter the price of {burger}", 0, 40, "BURGER")
+side_price = float_checker(f"Enter the price of {side}", 0, 25, "SIDE")
+drink_price = float_checker(f"Enter the price of {drink}", 0, 15, "DRINK")
 
 # Add the user's combo to a new dictionary
 
