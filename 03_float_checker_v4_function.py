@@ -20,10 +20,10 @@ def float_checker(question, low, high, item):
                 number = f"${number:.2f}"
                 return number
             else:
-                easygui.msgbox(error)
+                easygui.msgbox(error, "ERROR")
 
         except ValueError:
-            easygui.msgbox(error, "Error")
+            easygui.msgbox(error, "ERROR")
 
 
 # Main routine
