@@ -1,5 +1,5 @@
-"""Puts the float function 03_float_checker_v4_function into the code.
-Building on the code from version 2"""
+"""Puts the blank checker into the code.
+Building on the code from version 3"""
 
 import easygui
 
@@ -26,6 +26,24 @@ def float_checker(question, low, high, item):
             easygui.msgbox(error, "Error")
 
 
+# Function to make sure input is entered and not left blank
+def blank_checker(question, title):
+    error_message = "You must fill out every field"
+
+    # Asks user for input
+    answer = easygui.enterbox(question, title)
+
+    while True:  # Loops until valid input is entered
+        if answer == "":  # Checks if it is blank
+            easygui.msgbox(error_message, "ERROR")  # Display error message
+            answer = easygui.enterbox(question, title)
+        else:
+            return answer
+
+
+# Main Routine
+
+
 # Stores burger combos in a nested dictionary
 combos = {"VALUE":
             {"Beef Burger": 5.69,
@@ -40,15 +58,13 @@ combos = {"VALUE":
              "Large fries": 2.00,
              "Smoothie": 2.00}
           }
-
 new_combo = {}
 
 # Get items in combos
-
-combo_name = easygui.enterbox("Enter combo name", "COMBO NAME").upper()
-burger = easygui.enterbox("Enter burger name", "BURGER").title()
-side = easygui.enterbox("Enter side name", "SIDE").title()
-drink = easygui.enterbox("Enter drink name", "DRINK").title()
+combo_name = blank_checker("Enter combo name", "COMBO NAME").upper()
+burger = blank_checker("Enter burger name", "BURGER").title()
+side = blank_checker("Enter side name", "SIDE").title()
+drink = blank_checker("Enter drink name", "DRINK").title()
 
 # Get prices of combos
 burger_price = float_checker(f"Enter the price of {burger}", 0, 40, "BURGER")
@@ -58,7 +74,7 @@ drink_price = float_checker(f"Enter the price of {drink}", 0, 15, "DRINK")
 # Add the user's combo to a new dictionary
 
 new_combo[combo_name] = {}  # Adds key of combo name and empty dictionary
-new_combo[combo_name][burger] = burger_price # Adds burger and price
+new_combo[combo_name][burger] = burger_price  # Adds burger and price
 new_combo[combo_name][side] = side_price  # Adds side and price
 new_combo[combo_name][drink] = drink_price  # Adds drink and price
 

@@ -28,7 +28,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.04_blank_checker_v3_function (1)">
+  <component name="RunManager" selected="Python.05_change_combo">
     <configuration name="02_add_v4" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Burger Menu Combos" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -113,7 +113,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="04_blank_checker_v3_function" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="05_change_combo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Burger Menu Combos" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -125,7 +125,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\jireh\OneDrive - Middleton Grange School\2023\Computer Science\Programming\Burger Menu Combos\04_blank_checker_v3_function.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/05_change_combo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -136,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.05_change_combo" />
+        <item itemvalue="Python.02_add_v4" />
         <item itemvalue="Python.04_blank_checker_v3_function (1)" />
         <item itemvalue="Python.04_blank_checker_v2" />
         <item itemvalue="Python.04_blank_checker_v1" />
-        <item itemvalue="Python.04_blank_checker_v3_function" />
-        <item itemvalue="Python.02_add_v4" />
       </list>
     </recent_temporary>
   </component>
