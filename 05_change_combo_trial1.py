@@ -23,25 +23,37 @@ def float_checker(question, low, high, item):
 
 
 def change_combo(combo_confirm):
-    # Print the combo and check with user that it is correct
-    combo = ""
-    for combo_name, combo_info in combo_confirm.items():
-        name = f"{combo_name}"
+    while True:
 
-        for food in combo_info:
-            combo += f"{food}: {combo_info[food]}\n"
+        # Print the combo and check with user that it is correct
+        combo = ""
+        for combo_name, combo_info in combo_confirm.items():
+            name = f"{combo_name}"
 
-    choice = easygui.buttonbox(f"/ / / Is the following combo correct? / / "
-                               f"/\n\n"
-                               f"{name}\n\n"
-                               f"{combo}",
-                               "PLEASE CONFIRM",
-                               choices=["Yes", "No"])
-    while choice == "No":
+            for food in combo_info:
+                combo += f"{food}: {combo_info[food]}\n"
+
+        choice = easygui.buttonbox(f"/ / / Is the following combo correct? / / "
+                                   f"/\n\n"
+                                   f"{name}\n\n"
+                                   f"{combo}",
+                                   "PLEASE CONFIRM",
+                                   choices=["Yes", "No"])
+
+        if choice == "Yes":
+            break
+
         change = easygui.buttonbox("What would you like to change?",
-                          choices=["Combo name", "Item name", "Price"])
+                                   choices=["Combo name", "Item name",
+                                            "Price"])
+
         if change == "Combo name":
-            easygui.enterbox("What would you like to change it to?")
+            combo_name_change = easygui.enterbox("What would you like to "
+                                                 "change it to?")
+
+            combo_confirm[combo_name_change] = combo_confirm.pop(combo_name)
+
+            easygui.msgbox(combo_confirm)
 
         elif change == "Item name":
             item_change = easygui.enterbox("Enter the name of the item you "
@@ -49,49 +61,42 @@ def change_combo(combo_confirm):
                                            f"{name}\n\n"
                                            f"{combo}")
 
-            while item_change not in combo_info:
+            while item_change not in combo_confirm[combo_name]:
                 easygui.msgbox(f"Sorry {item_change} is not in the original "
-                f"combo")
-
-                item_change = easygui.enterbox("Enter the name of the item "
-                                               "you want to change\n\n"
+                               f"combo")
+                item_change = easygui.enterbox("Enter the name of the item you"
+                                               " want to change\n\n"
                                                f"{name}\n\n"
                                                f"{combo}")
 
-            if item_change in combo_confirm:
-                new_item = easygui.enterbox(f"What would you like to change "
-                                            f"{item_change} to?")
-                item_change = new_item
+            new_item = easygui.enterbox(f"What would you like to change "
+                                        f"{item_change} to?")
+
+            combo_confirm[combo_name][new_item] = combo_confirm[
+                combo_name].pop(item_change)
+
+            print(combo_confirm)
+
 
         elif change == "Price":
-            item_change = easygui.enterbox("Enter the name of the item's "
-                                           "price you want to change\n\n"
-                                           f"{name}\n\n"
-                                           f"{combo}")
-            while item_change not in combo_info:
-                easygui.msgbox(f"Sorry {item_change} is not in the original "
+            price_change = easygui.enterbox("Enter the name of the item's "
+                                            "price you want to change\n\n"
+                                            f"{name}\n\n"
+                                            f"{combo}")
+
+            while price_change not in combo_confirm[combo_name]:
+                easygui.msgbox(f"Sorry {price_change} is not in the original "
                 f"combo")
+                price_change = easygui.enterbox("Enter the name of the item's "
+                                                "price you want to change\n\n"
+                                                f"{name}\n\n"
+                                                f"{combo}")
 
-            item_change = easygui.enterbox("Enter the name of the item's "
-                                           "price you want to change\n\n"
-                                           f"{name}\n\n"
-                                           f"{combo}")
+            new_price = easygui.enterbox(f"What would you like to change "
+                                         f"{price_change}'s price to?")
 
-            if item_change in combo_confirm:
-                new_price = float_checker(easygui.enterbox(f"What would you "
-                                                         f"like to "
-                                               f"change "
-                                            f"{item_change}'s price to?"))
-
-                combo_confirm[item_change] = new_price
-
-        choice = easygui.buttonbox(f"/ / / Is the following combo correct? / / "
-                           f"/\n\n"
-                           f"{name}\n\n"
-                           f"{combo}",
-                           "PLEASE CONFIRM",
-                           choices=["Yes", "No"])
-
+            combo_confirm[combo_name][price_change] = new_price
+            easygui.msgbox(combo_confirm)
 
 
 # Main Routine
