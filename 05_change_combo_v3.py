@@ -6,7 +6,7 @@ import easygui
 # Combo to change
 new_combo = {"SUPER":
             {"Cheeseburger": 6.69,
-             "Large fries": 2.00,
+             "Large Fries": 2.00,
              "Smoothie": 2.00}}
 
 # Keep looping until the combo is correct
@@ -39,7 +39,7 @@ while True:
 
         # Ask user for new combo name
         combo_name_change = easygui.enterbox("What would you like to "
-                                             "change it to?")
+                                             "change it to?").upper()
 
         # Replace the combo name with new name
         new_combo[combo_name_change] = new_combo.pop(combo_name)
@@ -50,7 +50,7 @@ while True:
         item_change = easygui.enterbox("Enter the name of the item you "
                                        "want to change\n\n"
                                        f"{name}\n\n"
-                                       f"{combo}")
+                                       f"{combo}").title()
 
         # Give error message if item does not exist
         while item_change not in new_combo[combo_name]:
@@ -61,11 +61,11 @@ while True:
             item_change = easygui.enterbox("Enter the name of the item you "
                                            "want to change\n\n"
                                            f"{name}\n\n"
-                                           f"{combo}")
+                                           f"{combo}").title()
 
         # Ask user for new item name
         new_item = easygui.enterbox(f"What would you like to change "
-                                    f"{item_change} to?")
+                                    f"{item_change} to?").title()
 
         # Replace the current item name with new one
         new_combo[combo_name][new_item] = new_combo[combo_name].pop(
@@ -77,7 +77,7 @@ while True:
         price_change = easygui.enterbox("Enter the name of the item's "
                                         "price you want to change\n\n"
                                         f"{name}\n\n"
-                                        f"{combo}")
+                                        f"{combo}").title()
 
         # Give error message if item does not exist
         while price_change not in new_combo[combo_name]:
@@ -88,7 +88,7 @@ while True:
             price_change = easygui.enterbox("Enter the name of the item's "
                                             "price you want to change\n\n"
                                             f"{name}\n\n"
-                                            f"{combo}")
+                                            f"{combo}").title()
 
         # Ask user for new item price
         new_price = easygui.enterbox(f"What would you like to change "

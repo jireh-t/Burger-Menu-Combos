@@ -6,17 +6,17 @@ import easygui
 
 # Stores burger combos in a nested dictionary
 combos = {"VALUE":
-            {"Beef Burger": 5.69,
-             "Fries": 1.00,
-             "Fizzy drink": 1.00},
+            {"Beef Burger": "$5.69",
+             "Fries": "$1.00",
+             "Fizzy Drink": "$1.00"},
           "CHEEZY":
-            {"Cheeseburger": 6.69,
-             "Fries": 1.00,
-             "Fizzy drink": 1.00},
+            {"Cheeseburger": "$6.69",
+             "Fries": "$1.00",
+             "Fizzy Drink": "$1.00"},
           "SUPER":
-            {"Cheeseburger": 6.69,
-             "Large fries": 2.00,
-             "Smoothie": 2.00}
+            {"Cheeseburger": "$6.69",
+             "Large Fries": "$2.00",
+             "Smoothie": "$2.00"}
           }
 
 new_combo = {}

@@ -46,17 +46,17 @@ def blank_checker(question, title):
 
 # Stores burger combos in a nested dictionary
 combos = {"VALUE":
-            {"Beef Burger": 5.69,
-             "Fries": 1.00,
-             "Fizzy drink": 1.00},
+            {"Beef Burger": "$5.69",
+             "Fries": "$1.00",
+             "Fizzy Drink": "$1.00"},
           "CHEEZY":
-            {"Cheeseburger": 6.69,
-             "Fries": 1.00,
-             "Fizzy drink": 1.00},
+            {"Cheeseburger": "$6.69",
+             "Fries": "$1.00",
+             "Fizzy Drink": "$1.00"},
           "SUPER":
-            {"Cheeseburger": 6.69,
-             "Large fries": 2.00,
-             "Smoothie": 2.00}
+            {"Cheeseburger": "$6.69",
+             "Large Fries": "$2.00",
+             "Smoothie": "$2.00"}
           }
 new_combo = {}
 
@@ -68,8 +68,8 @@ drink = blank_checker("Enter drink name", "DRINK").title()
 
 # Get prices of combos
 burger_price = float_checker(f"Enter the price of {burger}", 0, 40, "BURGER")
-side_price = float_checker(f"Enter the price of {side}", 0, 25, "SIDE")
-drink_price = float_checker(f"Enter the price of {drink}", 0, 15, "DRINK")
+side_price = float_checker(f"Enter the price of {side}", 0, 40, "SIDE")
+drink_price = float_checker(f"Enter the price of {drink}", 0, 40, "DRINK")
 
 # Add the user's combo to a new dictionary
 

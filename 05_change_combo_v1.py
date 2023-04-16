@@ -6,7 +6,7 @@ import easygui
 # Combo to change
 new_combo = {"SUPER":
             {"Cheeseburger": 6.69,
-             "Large fries": 2.00,
+             "Large Fries": 2.00,
              "Smoothie": 2.00}}
 
 # Keep looping until the combo is correct
