@@ -53,8 +53,6 @@ def change_combo(combo_confirm):
 
             combo_confirm[combo_name_change] = combo_confirm.pop(combo_name)
 
-            easygui.msgbox(combo_confirm)
-
         elif change == "Item name":
             item_change = easygui.enterbox("Enter the name of the item you "
                                            "want to change\n\n"
@@ -75,8 +73,6 @@ def change_combo(combo_confirm):
             combo_confirm[combo_name][new_item] = combo_confirm[
                 combo_name].pop(item_change)
 
-            print(combo_confirm)
-
 
         elif change == "Price":
             price_change = easygui.enterbox("Enter the name of the item's "
@@ -96,7 +92,8 @@ def change_combo(combo_confirm):
                                          f"{price_change}'s price to?")
 
             combo_confirm[combo_name][price_change] = new_price
-            easygui.msgbox(combo_confirm)
+
+
 
 
 # Main Routine
@@ -106,3 +103,21 @@ new_combo = {"SUPER":
              "Smoothie": 2.00}}
 
 change_combo(new_combo)
+
+combos = {"VALUE":
+            {"Beef Burger": 5.69,
+             "Fries": 1.00,
+             "Fizzy drink": 1.00},
+          "CHEEZY":
+            {"Cheeseburger": 6.69,
+             "Fries": 1.00,
+             "Fizzy drink": 1.00},
+          "SUPER":
+            {"Cheeseburger": 6.69,
+             "Large fries": 2.00,
+             "Smoothie": 2.00}}
+
+print(combos)
+
+
+
