@@ -1,3 +1,5 @@
+"""Puts code from version 2 into a function"""
+
 import easygui
 
 

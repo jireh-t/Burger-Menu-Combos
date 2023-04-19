@@ -1,5 +1,4 @@
-"""Version 5 of change combo component. Making the previous code more
-flexible by putting it into a function"""
+"""Puts code from version 5 into a function"""
 
 import easygui
 
@@ -20,10 +19,10 @@ def float_checker(question, low, high, item):
                 number = f"${number:.2f}"
                 return number
             else:
-                easygui.msgbox(error, "ERROR")
+                easygui.msgbox(error)
 
         except ValueError:
-            easygui.msgbox(error, "ERROR")
+            easygui.msgbox(error, "Error")
 
 
 # Function to make sure input is entered and not left blank
@@ -63,8 +62,9 @@ def change_combo(combo_confirm):
                                    "PLEASE CONFIRM",
                                    choices=["Yes", "No"])
         if choice == "Yes":
-            easygui.msgbox(f"You have successfully added the combo "
-                           f"{combo_name}", "NEW COMBO ADDED")
+            easygui.msgbox(f"The changed combo is\n\n"
+                           f"{name}\n\n"
+                           f"{combo}")
             return combo_confirm
 
         # Ask the user what they would like to change
@@ -139,32 +139,44 @@ def change_combo(combo_confirm):
             combo_confirm[combo_name][price_change] = new_price
 
 
-# Main Routine
+# Function for user to add a new combo
+def add_combo():
+    # Stores burger combos in a nested dictionary
+    combos = {"VALUE":
+                {"Beef Burger": "$5.69",
+                 "Fries": "$1.00",
+                 "Fizzy Drink": "$1.00"},
+              "CHEEZY":
+                {"Cheeseburger": "$6.69",
+                 "Fries": "$1.00",
+                 "Fizzy Drink": "$1.00"},
+              "SUPER":
+                {"Cheeseburger": "$6.69",
+                 "Large Fries": "$2.00",
+                 "Smoothie": "$2.00"}
+              }
+    new_combo = {}
 
+    # Get items in combos
+    combo_name = blank_checker("Enter combo name", "COMBO NAME").upper()
+    burger = blank_checker("Enter burger name", "BURGER").title()
+    side = blank_checker("Enter side name", "SIDE").title()
+    drink = blank_checker("Enter drink name", "DRINK").title()
 
-combos = {"VALUE":
-            {"Beef Burger": "$5.69",
-             "Fries": "$1.00",
-             "Fizzy Drink": "$1.00"},
-          "CHEEZY":
-            {"Cheeseburger": "$6.69",
-             "Fries": "$1.00",
-             "Fizzy Drink": "$1.00"},
-          "SUPER":
-            {"Cheeseburger": "$6.69",
-             "Large Fries": "$2.00",
-             "Smoothie": "$2.00"}
-          }
+    # Get prices of combos
+    burger_price = float_checker(f"Enter the price of {burger}", 0, 40, "BURGER")
+    side_price = float_checker(f"Enter the price of {side}", 0, 40, "SIDE")
+    drink_price = float_checker(f"Enter the price of {drink}", 0, 40, "DRINK")
 
-# Combo to change
-new_combo = {"DELUXE":
-            {"Baconburger": "$8.78",
-             "Wedges": "$3.50",
-             "Fanta": "$1.00"}}
+    # Add the user's combo to a new dictionary
 
-# Get the correct updated combo
-correct_combo = change_combo(new_combo)
+    new_combo[combo_name] = {}  # Adds key of combo name and empty dictionary
+    new_combo[combo_name][burger] = burger_price  # Adds burger and price
+    new_combo[combo_name][side] = side_price  # Adds side and price
+    new_combo[combo_name][drink] = drink_price  # Adds drink and price
 
-# Add the correct combo to the list of combos
-combos.update(correct_combo)
+    # Get the correct updated combo
+    correct_combo = change_combo(new_combo)
 
+    # Add the correct combo to the list of combos
+    combos.update(correct_combo)
