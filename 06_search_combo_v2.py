@@ -1,5 +1,5 @@
-"""Version 5 of change combo component. Making the previous code more
-flexible by putting it into a function"""
+"""Builds on the code from version 1, adds the change combo function from
+component 5"""
 
 import easygui
 
@@ -43,7 +43,6 @@ def blank_checker(question, title):
 
 # Function to allow user to edit the combo
 def change_combo(combo_confirm):
-
     # Keep looping until the combo is correct
     while True:
 
@@ -63,7 +62,7 @@ def change_combo(combo_confirm):
                                    "PLEASE CONFIRM",
                                    choices=["Yes", "No"])
         if choice == "Yes":
-            easygui.msgbox(f"You have successfully changed the combo "
+            easygui.msgbox(f"You have successfully added the combo "
                            f"{combo_name}", "NEW COMBO ADDED")
             return combo_confirm
 
@@ -107,7 +106,7 @@ def change_combo(combo_confirm):
                                      f"{item_change} to?", "New Item").title()
 
             # Replace the current item name with new one
-            combo_confirm[combo_name][new_item] = combo_confirm[combo_name].\
+            combo_confirm[combo_name][new_item] = combo_confirm[combo_name]. \
                 pop(item_change)
 
         elif change == "Price":
@@ -141,30 +140,33 @@ def change_combo(combo_confirm):
 
 # Main Routine
 
-
+# Stores burger combos in a nested dictionary
 combos = {"VALUE":
-            {"Beef Burger": "$5.69",
-             "Fries": "$1.00",
-             "Fizzy Drink": "$1.00"},
+              {"Beef Burger": "$5.69",
+               "Fries": "$1.00",
+               "Fizzy Drink": "$1.00"},
           "CHEEZY":
-            {"Cheeseburger": "$6.69",
-             "Fries": "$1.00",
-             "Fizzy Drink": "$1.00"},
+              {"Cheeseburger": "$6.69",
+               "Fries": "$1.00",
+               "Fizzy Drink": "$1.00"},
           "SUPER":
-            {"Cheeseburger": "$6.69",
-             "Large Fries": "$2.00",
-             "Smoothie": "$2.00"}
+              {"Cheeseburger": "$6.69",
+               "Large Fries": "$2.00",
+               "Smoothie": "$2.00"}
           }
 
-# Combo to change
-new_combo = {"DELUXE":
-            {"Baconburger": "$8.78",
-             "Wedges": "$3.50",
-             "Fanta": "$1.00"}}
+# Ask user to enter combo name they want to search
+search_name = easygui.enterbox("Enter name of combo", "SEARCH").upper()
 
-# Get the correct updated combo
-correct_combo = change_combo(new_combo)
+if search_name in combos:
+    easygui.msgbox(f"{search_name} is in the menu")
 
-# Add the correct combo to the list of combos
-combos.update(correct_combo)
+    # Add the searched combo to a separate dictionary
+    searched_combo = {search_name: combos[search_name]}
 
+    # Confirm the dictionary with user
+    change_combo(searched_combo)
+
+
+else:
+    easygui.msgbox(f"Sorry, {search_name} is not in the menu")

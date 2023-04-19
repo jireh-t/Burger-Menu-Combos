@@ -1,5 +1,10 @@
-"""Version 5 of change combo component. Making the previous code more
-flexible by putting it into a function"""
+"""Builds on the code from version 4, puts it into a function to use later"""
+
+"""Build on code from version 3, makes a loop so user can enter the name
+again if not in menu"""
+
+"""Builds on code from version 2, replaces the changed combo with the
+incorrect one from the menu"""
 
 import easygui
 
@@ -43,7 +48,6 @@ def blank_checker(question, title):
 
 # Function to allow user to edit the combo
 def change_combo(combo_confirm):
-
     # Keep looping until the combo is correct
     while True:
 
@@ -63,7 +67,7 @@ def change_combo(combo_confirm):
                                    "PLEASE CONFIRM",
                                    choices=["Yes", "No"])
         if choice == "Yes":
-            easygui.msgbox(f"You have successfully changed the combo "
+            easygui.msgbox(f"You have successfully added the combo "
                            f"{combo_name}", "NEW COMBO ADDED")
             return combo_confirm
 
@@ -107,7 +111,7 @@ def change_combo(combo_confirm):
                                      f"{item_change} to?", "New Item").title()
 
             # Replace the current item name with new one
-            combo_confirm[combo_name][new_item] = combo_confirm[combo_name].\
+            combo_confirm[combo_name][new_item] = combo_confirm[combo_name]. \
                 pop(item_change)
 
         elif change == "Price":
@@ -139,32 +143,45 @@ def change_combo(combo_confirm):
             combo_confirm[combo_name][price_change] = new_price
 
 
+# Function to allow user to search for a combo
+def search_combo():
+    while True:
+        # Ask user to enter combo name they want to search
+        search_name = blank_checker("Enter name of combo", "SEARCH").upper()
+
+        # Show error message if the combo is not in the menu
+        while search_name not in combos:
+            easygui.msgbox(f"Sorry, {search_name} is not in the menu", "ERROR")
+            # Ask user to enter combo name they want to search
+            search_name = blank_checker("Enter name of combo", "SEARCH").upper()
+
+        # Add the searched combo to a separate dictionary
+        searched_combo = {search_name: combos[search_name]}
+
+        # Confirm the dictionary with user
+        correct_combo = change_combo(searched_combo)
+
+        # Delete the original combo
+        del[combos[search_name]]
+
+        # Add the changed correct combo
+        combos.update(correct_combo)
+
+        break
+
+
 # Main Routine
 
-
 combos = {"VALUE":
-            {"Beef Burger": "$5.69",
-             "Fries": "$1.00",
-             "Fizzy Drink": "$1.00"},
+              {"Beef Burger": "$5.69",
+               "Fries": "$1.00",
+               "Fizzy Drink": "$1.00"},
           "CHEEZY":
-            {"Cheeseburger": "$6.69",
-             "Fries": "$1.00",
-             "Fizzy Drink": "$1.00"},
+              {"Cheeseburger": "$6.69",
+               "Fries": "$1.00",
+               "Fizzy Drink": "$1.00"},
           "SUPER":
-            {"Cheeseburger": "$6.69",
-             "Large Fries": "$2.00",
-             "Smoothie": "$2.00"}
+              {"Cheeseburger": "$6.69",
+               "Large Fries": "$2.00",
+               "Smoothie": "$2.00"}
           }
-
-# Combo to change
-new_combo = {"DELUXE":
-            {"Baconburger": "$8.78",
-             "Wedges": "$3.50",
-             "Fanta": "$1.00"}}
-
-# Get the correct updated combo
-correct_combo = change_combo(new_combo)
-
-# Add the correct combo to the list of combos
-combos.update(correct_combo)
-

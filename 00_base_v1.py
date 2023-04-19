@@ -75,7 +75,7 @@ def change_combo(combo_confirm):
                                    "PLEASE CONFIRM",
                                    choices=["Yes", "No"])
         if choice == "Yes":
-            easygui.msgbox(f"You have successfully added the combo "
+            easygui.msgbox(f"You have successfully changed the combo "
                            f"{combo_name}", "NEW COMBO ADDED")
             return combo_confirm
 
@@ -152,21 +152,8 @@ def change_combo(combo_confirm):
 
 
 # Function for user to add a new combo
-def add_combo():
-    # Stores burger combos in a nested dictionary
-    combos = {"VALUE":
-                {"Beef Burger": "$5.69",
-                 "Fries": "$1.00",
-                 "Fizzy Drink": "$1.00"},
-              "CHEEZY":
-                {"Cheeseburger": "$6.69",
-                 "Fries": "$1.00",
-                 "Fizzy Drink": "$1.00"},
-              "SUPER":
-                {"Cheeseburger": "$6.69",
-                 "Large Fries": "$2.00",
-                 "Smoothie": "$2.00"}
-              }
+def add_combo(combos):
+
     new_combo = {}
 
     # Get items in combos
@@ -194,23 +181,70 @@ def add_combo():
     combos.update(correct_combo)
 
 
+# Function to allow user to search for a combo
+def search_combo(combos):
+    while True:
+        # Ask user to enter combo name they want to search
+        search_name = blank_checker("Enter name of combo", "SEARCH").upper()
+
+        # Show error message if the combo is not in the menu
+        while search_name not in combos:
+            easygui.msgbox(f"Sorry, {search_name} is not in the menu", "ERROR")
+            # Ask user to enter combo name they want to search
+            search_name = blank_checker("Enter name of combo", "SEARCH").upper()
+
+        # Add the searched combo to a separate dictionary
+        searched_combo = {search_name: combos[search_name]}
+
+        # Confirm the dictionary with user
+        correct_combo = change_combo(searched_combo)
+
+        # Delete the original combo
+        del[combos[search_name]]
+
+        # Add the changed correct combo
+        combos.update(correct_combo)
+
+        break
+
+
 # Main Routine
+# Stores burger combos in a nested dictionary
+combos = {"VALUE":
+            {"Beef Burger": "$5.69",
+             "Fries": "$1.00",
+             "Fizzy Drink": "$1.00"},
+          "CHEEZY":
+            {"Cheeseburger": "$6.69",
+             "Fries": "$1.00",
+             "Fizzy Drink": "$1.00"},
+          "SUPER":
+            {"Cheeseburger": "$6.69",
+             "Large Fries": "$2.00",
+             "Smoothie": "$2.00"}
+          }
 option = welcome()
 
-if option == "1) Add combo":
-    add_combo()
+while option != "5) Exit":
 
-elif option == "2) Search combo":
-    print("Search combo")
+    if option == "1) Add combo":
+        add_combo(combos)
+        print(combos)
 
-elif option == "3) Delete combo":
-    print("Delete combo")
+    elif option == "2) Search combo":
+        search_combo(combos)
+        print(combos)
 
-elif option == "4) Output combo":
-    print("Output combo")
+    elif option == "3) Delete combo":
+        print("Delete combo")
 
-elif option == "5) Exit":
-    print("Goodbye")
+    elif option == "4) Output combo":
+        print("Output combo")
+
+    elif option == "5) Exit":
+        print("Goodbye")
+
+    option = welcome()
 
 
 
