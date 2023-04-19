@@ -144,7 +144,7 @@ def change_combo(combo_confirm):
 
 
 # Function to allow user to search for a combo
-def search_combo():
+def search_combo(combos):
     while True:
         # Ask user to enter combo name they want to search
         search_name = blank_checker("Enter name of combo", "SEARCH").upper()

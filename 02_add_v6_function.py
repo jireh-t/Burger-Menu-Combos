@@ -1,4 +1,5 @@
-"""Puts code from version 5 into a function"""
+"""Puts code from version 5 into a function and makes sure the combo name is
+not already in the menu"""
 
 import easygui
 
@@ -62,9 +63,8 @@ def change_combo(combo_confirm):
                                    "PLEASE CONFIRM",
                                    choices=["Yes", "No"])
         if choice == "Yes":
-            easygui.msgbox(f"The changed combo is\n\n"
-                           f"{name}\n\n"
-                           f"{combo}")
+            easygui.msgbox(f"You have successfully confirmed the combo "
+                           f"{combo_name}", "NEW COMBO ADDED")
             return combo_confirm
 
         # Ask the user what they would like to change
@@ -79,6 +79,14 @@ def change_combo(combo_confirm):
             combo_name_change = blank_checker("What would you like to change "
                                               "it to?",
                                               "New Combo Name").upper()
+            while combo_name_change in combos:
+                easygui.msgbox(f"Sorry, {combo_name_change} is already the "
+                               f"name of a combo "
+                               f"in the menu\n You must choose a different name",
+                               "ERROR")
+                combo_name_change = blank_checker("What would you like to change "
+                                  "it to?",
+                                  "New Combo Name").upper()
 
             # Replace the combo name with new name
             combo_confirm[combo_name_change] = combo_confirm.pop(name)
@@ -140,25 +148,20 @@ def change_combo(combo_confirm):
 
 
 # Function for user to add a new combo
-def add_combo():
-    # Stores burger combos in a nested dictionary
-    combos = {"VALUE":
-                {"Beef Burger": "$5.69",
-                 "Fries": "$1.00",
-                 "Fizzy Drink": "$1.00"},
-              "CHEEZY":
-                {"Cheeseburger": "$6.69",
-                 "Fries": "$1.00",
-                 "Fizzy Drink": "$1.00"},
-              "SUPER":
-                {"Cheeseburger": "$6.69",
-                 "Large Fries": "$2.00",
-                 "Smoothie": "$2.00"}
-              }
+def add_combo(combos):
+
     new_combo = {}
 
     # Get items in combos
     combo_name = blank_checker("Enter combo name", "COMBO NAME").upper()
+
+    # Show error message if the combo name is already in the menu
+    while combo_name in combos:
+        easygui.msgbox(f"Sorry, {combo_name} is already the name of a combo "
+                       f"in the menu\n You must choose a different name",
+                       "ERROR")
+        combo_name = blank_checker("Enter combo name", "COMBO NAME").upper()
+
     burger = blank_checker("Enter burger name", "BURGER").title()
     side = blank_checker("Enter side name", "SIDE").title()
     drink = blank_checker("Enter drink name", "DRINK").title()
@@ -180,3 +183,20 @@ def add_combo():
 
     # Add the correct combo to the list of combos
     combos.update(correct_combo)
+
+
+# Main Routine
+# Stores burger combos in a nested dictionary
+combos = {"VALUE":
+            {"Beef Burger": "$5.69",
+             "Fries": "$1.00",
+             "Fizzy Drink": "$1.00"},
+          "CHEEZY":
+            {"Cheeseburger": "$6.69",
+             "Fries": "$1.00",
+             "Fizzy Drink": "$1.00"},
+          "SUPER":
+            {"Cheeseburger": "$6.69",
+             "Large Fries": "$2.00",
+             "Smoothie": "$2.00"}
+          }

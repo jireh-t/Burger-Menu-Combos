@@ -6,7 +6,7 @@ import easygui
 
 # Function to display welcome screen and menu
 def welcome():
-    easygui.msgbox("* * * Welcome to Burger Menu Combos * * *", "WELCOME")
+
     # Allow the user to select what they want to do
     choice = easygui.buttonbox("What would you like to do?\n",
                                "OPTIONS",
@@ -75,7 +75,7 @@ def change_combo(combo_confirm):
                                    "PLEASE CONFIRM",
                                    choices=["Yes", "No"])
         if choice == "Yes":
-            easygui.msgbox(f"You have successfully changed the combo "
+            easygui.msgbox(f"You have successfully confirmed the combo "
                            f"{combo_name}", "NEW COMBO ADDED")
             return combo_confirm
 
@@ -91,6 +91,14 @@ def change_combo(combo_confirm):
             combo_name_change = blank_checker("What would you like to change "
                                               "it to?",
                                               "New Combo Name").upper()
+            while combo_name_change in combos:
+                easygui.msgbox(f"Sorry, {combo_name_change} is already the "
+                               f"name of a combo "
+                               f"in the menu\n You must choose a different name",
+                               "ERROR")
+                combo_name_change = blank_checker("What would you like to change "
+                                  "it to?",
+                                  "New Combo Name").upper()
 
             # Replace the combo name with new name
             combo_confirm[combo_name_change] = combo_confirm.pop(name)
@@ -158,6 +166,14 @@ def add_combo(combos):
 
     # Get items in combos
     combo_name = blank_checker("Enter combo name", "COMBO NAME").upper()
+
+    # Show error message if the combo name is already in the menu
+    while combo_name in combos:
+        easygui.msgbox(f"Sorry, {combo_name} is already the name of a combo "
+                       f"in the menu\n You must choose a different name",
+                       "ERROR")
+        combo_name = blank_checker("Enter combo name", "COMBO NAME").upper()
+
     burger = blank_checker("Enter burger name", "BURGER").title()
     side = blank_checker("Enter side name", "SIDE").title()
     drink = blank_checker("Enter drink name", "DRINK").title()
@@ -208,6 +224,59 @@ def search_combo(combos):
         break
 
 
+# Function to delete a combo
+def delete_combo(combos):
+
+    combo = ""
+    for combo_name, combo_info in combos.items():
+        name = f"{combo_name}"
+
+        for key in combo_info:
+            combo += f"{key}: {combo_info[key]}\n"
+
+
+    menu = ""
+
+    # Loop to print full menu
+    for combo_name, combo_info in combos.items():
+
+        # Print the combo name
+        menu += f"\n{combo_name}\n"
+
+        # Print the combo items and price
+        for key, value in combo_info.items():
+            menu += f"{key}: {value} \n"
+
+    # Output the full menu and ask the user what combo to delete
+    choice = blank_checker(f"/ / / Below is the full menu of combos/ / /\n\n"
+                           f"{menu}\n\n"
+                           "Which combo would you like to delete?",
+                           "ENTER COMBO NAME").upper()
+
+    # Show error message if the combo is not in the menu
+
+    while choice not in combos:
+        easygui.msgbox(f"Sorry, {choice} is not in the menu", "ERROR")
+
+        # Output the full menu and ask the user what combo to delete
+        choice = blank_checker(f"/ / / Below is the full menu of combos/ / /\n\n"
+                               f"{menu}\n\n"
+                               "Which combo would you like to delete?",
+                               "ENTER COMBO NAME").upper()
+
+    sure = easygui.buttonbox(f"Are you sure you want to delete {choice} from the "
+                             f"menu?\n\n"
+                             f"This cannot be undone",
+                             "PLEASE CONFIRM",
+                             choices=["Yes", "No"])
+
+    if sure == "Yes":
+        # Delete the combo
+        del[combos[choice]]
+        easygui.msgbox(f"{choice} has been deleted", "DELETED")
+
+
+
 # Main Routine
 # Stores burger combos in a nested dictionary
 combos = {"VALUE":
@@ -223,6 +292,8 @@ combos = {"VALUE":
              "Large Fries": "$2.00",
              "Smoothie": "$2.00"}
           }
+
+easygui.msgbox("* * * Welcome to Burger Menu Combos * * *", "WELCOME")
 option = welcome()
 
 while option != "5) Exit":
@@ -236,7 +307,8 @@ while option != "5) Exit":
         print(combos)
 
     elif option == "3) Delete combo":
-        print("Delete combo")
+        delete_combo(combos)
+        print(combos)
 
     elif option == "4) Output combo":
         print("Output combo")

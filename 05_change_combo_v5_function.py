@@ -63,7 +63,7 @@ def change_combo(combo_confirm):
                                    "PLEASE CONFIRM",
                                    choices=["Yes", "No"])
         if choice == "Yes":
-            easygui.msgbox(f"You have successfully changed the combo "
+            easygui.msgbox(f"You have successfully confirmed the combo "
                            f"{combo_name}", "NEW COMBO ADDED")
             return combo_confirm
 
@@ -79,6 +79,14 @@ def change_combo(combo_confirm):
             combo_name_change = blank_checker("What would you like to change "
                                               "it to?",
                                               "New Combo Name").upper()
+            while combo_name_change in combos:
+                easygui.msgbox(f"Sorry, {combo_name_change} is already the "
+                               f"name of a combo "
+                               f"in the menu\n You must choose a different name",
+                               "ERROR")
+                combo_name_change = blank_checker("What would you like to change "
+                                  "it to?",
+                                  "New Combo Name").upper()
 
             # Replace the combo name with new name
             combo_confirm[combo_name_change] = combo_confirm.pop(name)

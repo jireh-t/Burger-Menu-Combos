@@ -58,8 +58,9 @@ for combo_name, combo_info in combos.items():
 
 # Output the full menu and ask the user what combo to delete
 choice = blank_checker(f"/ / / Below is the full menu of combos/ / /\n\n"
-                          f"{menu}\n\n"
-                          "Which combo would you like to delete?").upper()
+                       f"{menu}\n\n"
+                       "Which combo would you like to delete?",
+                       "ENTER COMBO NAME").upper()
 
 # Show error message if the combo is not in the menu
 
@@ -83,3 +84,4 @@ if sure == "Yes":
     del[combos[choice]]
     easygui.msgbox(f"{choice} has been deleted", "DELETED")
 
+print(combos)
