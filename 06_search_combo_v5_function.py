@@ -1,11 +1,5 @@
 """Builds on the code from version 4, puts it into a function to use later"""
 
-"""Build on code from version 3, makes a loop so user can enter the name
-again if not in menu"""
-
-"""Builds on code from version 2, replaces the changed combo with the
-incorrect one from the menu"""
-
 import easygui
 
 
