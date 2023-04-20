@@ -40,6 +40,7 @@ def delete_combo(combos):
         # Print the combo items and price
         for key, value in combo_info.items():
             menu += f"{key}: {value} \n"
+        menu += "---------------------------------------"
 
     # Output the full menu and ask the user what combo to delete
     choice = blank_checker(f"/ / / Below is the full menu of combos/ / /\n\n"

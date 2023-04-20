@@ -58,7 +58,7 @@ while True:
         name = f"{combo_name}"
 
         for food in combo_info:
-            combo += f"{food}: {combo_info[food]}\n"
+            combo += f"{food}: ${combo_info[food]:.2f}\n"
 
     # Confirm the combo with the user
     choice = easygui.buttonbox(f"/ / / Is the following combo correct? / / "

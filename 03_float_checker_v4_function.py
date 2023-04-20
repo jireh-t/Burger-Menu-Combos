@@ -17,7 +17,6 @@ def float_checker(question, low, high, item):
 
             # Check for number within the required range
             if low < number <= high:
-                number = f"${number:.2f}"
                 return number
             else:
                 easygui.msgbox(error, "ERROR")
