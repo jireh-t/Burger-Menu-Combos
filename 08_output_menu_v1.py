@@ -1,4 +1,4 @@
-"""Version 1 of component 8 to output menu, printing the menu"""
+"""Trial 1 of component 8 to output menu, printing the whole menu at once"""
 
 import easygui
 
@@ -29,6 +29,6 @@ for combo_name, combo_info in combo_menu.items():
     for key, value in combo_info.items():
         menu += f"{key}: {value} \n"
 
-# Output the full menu and ask the user what combo to delete
+# Output the full menu
 easygui.msgbox(f"/ / / Below is the full menu of combos/ / /\n\n"
             f"{menu}\n\n")

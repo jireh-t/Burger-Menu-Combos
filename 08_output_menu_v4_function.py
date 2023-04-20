@@ -1,4 +1,4 @@
-"""Version 3 of component 8 to output menu, putting into a function"""
+"""Version 4 of component 8 to output menu, putting into a function"""
 
 import easygui
 from math import fsum

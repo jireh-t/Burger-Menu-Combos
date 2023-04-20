@@ -1,4 +1,4 @@
-"""Version 1 of component 7 to delete combo"""
+""""Trial 1 to delete combo using delete"""
 
 import easygui
 

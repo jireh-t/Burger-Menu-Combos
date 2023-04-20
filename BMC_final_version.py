@@ -10,7 +10,7 @@ def welcome():
     choice = easygui.buttonbox("What would you like to do?\n",
                                "OPTIONS",
                                choices=["1) Add combo", "2) Search combo",
-                                        "3) Delete combo", "4) Output combo",
+                                        "3) Delete combo", "4) Output menu",
                                         "5) Exit"])
     return choice
 
@@ -333,7 +333,7 @@ while option != "5) Exit":
         delete_combo(combo_menu)
         option = welcome()
 
-    elif option == "4) Output combo":
+    elif option == "4) Output menu":
         output_combo(combo_menu)
         option = welcome()
 

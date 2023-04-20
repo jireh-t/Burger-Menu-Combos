@@ -296,7 +296,7 @@ def output_combo(combos):
         menu += f"\nTotal: ${total:.2f}\n"
         menu += "---------------------------------------"
 
-    # Output the full menu and ask the user what combo to delete
+    # Output the full menu
     easygui.msgbox(f"/ / / Below is the full menu of combos/ / /\n\n"
                 f"{menu}\n\n", "MENU")
 
