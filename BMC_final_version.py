@@ -20,7 +20,7 @@ def float_checker(question, low, high, item):
     error = "That was not a valid input\n" \
             "Please enter a price above ${} and below ${}\n".format(low, high)
 
-    # Keep asking until a valid amount (0-40) is entered
+    # Keep asking until a valid amount (0-25) is entered
     while True:
         try:
             # Ask for price
@@ -51,7 +51,7 @@ def blank_checker(question, title):
             return answer
 
 
-# Function to allow user to edit the combo
+# Function to allow user to ed45it the combo
 def change_combo(combo_confirm, combos):
     # Keep looping until the combo is correct
     while True:
@@ -73,7 +73,7 @@ def change_combo(combo_confirm, combos):
                                    choices=["Yes", "No"])
         if choice == "Yes":
             easygui.msgbox(f"You have successfully confirmed the combo "
-                           f"{combo_name}", "NEW COMBO ADDED")
+                           f"{combo_name}", "COMBO CONFIRMED")
             return combo_confirm
 
         # Ask the user what they would like to change
@@ -150,7 +150,7 @@ def change_combo(combo_confirm, combos):
 
             # Ask user for new item price
             new_price = float_checker(f"What would you like to change "
-                                      f"{price_change}'s price to?", 0, 40,
+                                      f"{price_change}'s price to?", 0, 25,
                                       "New Price")
 
             # Replace the current item price with new one
@@ -176,10 +176,10 @@ def add_combo(combos):
     drink = blank_checker("Enter drink name", "DRINK").title()
 
     # Get prices of combos
-    burger_price = float_checker(f"Enter the price of {burger}", 0, 40,
+    burger_price = float_checker(f"Enter the price of {burger}", 0, 25,
                                  "BURGER")
-    side_price = float_checker(f"Enter the price of {side}", 0, 40, "SIDE")
-    drink_price = float_checker(f"Enter the price of {drink}", 0, 40, "DRINK")
+    side_price = float_checker(f"Enter the price of {side}", 0, 25, "SIDE")
+    drink_price = float_checker(f"Enter the price of {drink}", 0, 25, "DRINK")
 
     # Add the user's combo to a new dictionary
 

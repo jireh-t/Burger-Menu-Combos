@@ -90,3 +90,4 @@ combos = {"VALUE":
           }
 
 delete_combo(combos)
+print(combos)

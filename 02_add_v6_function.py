@@ -200,3 +200,5 @@ combos = {"VALUE":
              "Large Fries": "$2.00",
              "Smoothie": "$2.00"}
           }
+
+add_combo(combos)
